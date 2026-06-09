@@ -1,0 +1,174 @@
+[
+  {
+    "title": "复杂度复盘",
+    "module": "algorithms",
+    "group": "Analysis",
+    "tags": [
+      "complexity",
+      "review"
+    ],
+    "href": "./generated/notes/algorithms-analysis-complexity-review.html"
+  },
+  {
+    "title": "哈希表常见边界",
+    "module": "algorithms",
+    "group": "Data Structures",
+    "tags": [
+      "hash-table",
+      "complexity"
+    ],
+    "href": "./generated/notes/algorithms-data-structures-hash-table.html"
+  },
+  {
+    "title": "动态规划状态设计",
+    "module": "algorithms",
+    "group": "Problem Solving",
+    "tags": [
+      "dp",
+      "state",
+      "transition"
+    ],
+    "href": "./generated/notes/algorithms-problem-solving-dynamic-programming.html"
+  },
+  {
+    "title": "RAG 工作流",
+    "module": "engineering",
+    "group": "AI Agent",
+    "tags": [
+      "RAG",
+      "retrieval",
+      "agent"
+    ],
+    "href": "./generated/notes/engineering-ai-agent-rag-workflow.html"
+  },
+  {
+    "title": "REST API 设计记录",
+    "module": "engineering",
+    "group": "Backend",
+    "tags": [
+      "REST",
+      "backend",
+      "API"
+    ],
+    "href": "./generated/notes/engineering-backend-api-design.html"
+  },
+  {
+    "title": "ETL Pipeline 基础",
+    "module": "engineering",
+    "group": "Big Data",
+    "tags": [
+      "ETL",
+      "Spark",
+      "pipeline"
+    ],
+    "href": "./generated/notes/engineering-big-data-etl-pipeline.html"
+  },
+  {
+    "title": "Neo4j 建模笔记",
+    "module": "engineering",
+    "group": "Knowledge Graph",
+    "tags": [
+      "Neo4j",
+      "graph",
+      "Cypher"
+    ],
+    "href": "./generated/notes/engineering-knowledge-graph-neo4j-modeling.html"
+  },
+  {
+    "title": "机器学习实验记录",
+    "module": "engineering",
+    "group": "Machine Learning",
+    "tags": [
+      "experiment",
+      "ML",
+      "evaluation"
+    ],
+    "href": "./generated/notes/engineering-machine-learning-experiment-tracking.html"
+  },
+  {
+    "title": "STL 常用容器",
+    "module": "programming",
+    "group": "C++",
+    "tags": [
+      "STL",
+      "container",
+      "algorithm"
+    ],
+    "href": "./generated/notes/programming-cpp-stl-containers.html"
+  },
+  {
+    "title": "Goroutine 与 Channel",
+    "module": "programming",
+    "group": "Go",
+    "tags": [
+      "goroutine",
+      "channel",
+      "concurrency"
+    ],
+    "href": "./generated/notes/programming-go-goroutine-channel.html"
+  },
+  {
+    "title": "JVM 基础",
+    "module": "programming",
+    "group": "Java",
+    "tags": [
+      "JVM",
+      "memory",
+      "backend"
+    ],
+    "href": "./generated/notes/programming-java-jvm-basics.html"
+  },
+  {
+    "title": "PyTorch 训练流程",
+    "module": "programming",
+    "group": "Python",
+    "tags": [
+      "PyTorch",
+      "training",
+      "experiment"
+    ],
+    "href": "./generated/notes/programming-python-pytorch-training.html"
+  },
+  {
+    "title": "所有权模型",
+    "module": "programming",
+    "group": "Rust",
+    "tags": [
+      "ownership",
+      "borrow",
+      "memory"
+    ],
+    "href": "./generated/notes/programming-rust-ownership.html"
+  },
+  {
+    "title": "实验复现记录",
+    "module": "research",
+    "group": "Experiment",
+    "tags": [
+      "reproduction",
+      "experiment"
+    ],
+    "href": "./generated/notes/research-experiment-reproduction-log.html"
+  },
+  {
+    "title": "论文阅读模板",
+    "module": "research",
+    "group": "Method",
+    "tags": [
+      "paper",
+      "method",
+      "template"
+    ],
+    "href": "./generated/notes/research-method-paper-reading-template.html"
+  },
+  {
+    "title": "研究问题定义",
+    "module": "research",
+    "group": "Question",
+    "tags": [
+      "problem",
+      "survey"
+    ],
+    "href": "./generated/notes/research-question-problem-framing.html"
+  }
+]

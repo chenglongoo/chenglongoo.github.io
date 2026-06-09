@@ -1,0 +1,106 @@
+{
+  "languages": [
+    {
+      "name": "C++",
+      "status": "算法训练 / 系统基础",
+      "use": "用于数据结构与算法、性能意识训练，以及理解内存和底层机制。",
+      "topics": ["STL", "内存管理", "智能指针", "模板", "并发基础"]
+    },
+    {
+      "name": "Java",
+      "status": "后端方向学习中",
+      "use": "用于后端服务、企业级开发基础、面向对象设计和 Spring 生态学习。",
+      "topics": ["JVM", "集合框架", "并发", "Spring Boot", "数据库访问"]
+    },
+    {
+      "name": "Python",
+      "status": "常用 / 科研与 AI",
+      "use": "用于模型实验、数据处理、脚本自动化、快速原型和部分后端服务。",
+      "topics": ["PyTorch", "Pandas", "FastAPI", "类型标注", "自动化脚本"]
+    },
+    {
+      "name": "Rust",
+      "status": "计划 / 学习中",
+      "use": "用于建立更强的系统编程、安全抽象、错误处理和并发模型理解。",
+      "topics": ["Ownership", "Borrowing", "Lifetime", "Trait", "Cargo"]
+    },
+    {
+      "name": "Go",
+      "status": "计划 / 学习中",
+      "use": "用于后端服务、云原生工具链、并发模型和简洁工程实践。",
+      "topics": ["Goroutine", "Channel", "Interface", "HTTP 服务", "部署"]
+    }
+  ],
+  "algorithms": [
+    {
+      "title": "Data Structures",
+      "score": "基础",
+      "note": "数组、链表、树、图、堆、哈希等基础结构，重点记录使用场景和常见边界。",
+      "items": ["常用模板", "复杂度整理", "易错点记录"]
+    },
+    {
+      "title": "Problem Solving",
+      "score": "训练",
+      "note": "按动态规划、搜索、贪心、图论、字符串等专题整理题解。",
+      "items": ["专题题单", "题解笔记", "面试常见题型"]
+    },
+    {
+      "title": "Analysis",
+      "score": "复盘",
+      "note": "记录状态设计、边界条件、复杂度分析和没有一次做对的题。",
+      "items": ["复杂度分析", "状态转移推导", "错题复盘"]
+    }
+  ],
+  "engineering": [
+    {
+      "title": "Backend",
+      "status": "项目实践",
+      "note": "设计接口、组织业务逻辑、处理数据持久化、认证权限、任务调度和基础部署。",
+      "tags": ["FastAPI", "Spring Boot", "REST API", "SQL", "Docker"]
+    },
+    {
+      "title": "Big Data",
+      "status": "方向积累",
+      "note": "围绕数据清洗、ETL、批处理任务和大规模数据分析整理工具链与实践记录。",
+      "tags": ["Spark", "Hadoop", "Hive", "ETL", "Data Pipeline"]
+    },
+    {
+      "title": "Machine Learning",
+      "status": "持续使用",
+      "note": "覆盖数据处理、模型训练、实验评估、结果分析，以及基础推理服务的构建。",
+      "tags": ["PyTorch", "Scikit-learn", "Pandas", "Experiment", "Inference"]
+    },
+    {
+      "title": "AI Agent",
+      "status": "重点关注",
+      "note": "探索工具调用、RAG、任务编排、记忆机制和多步骤推理应用的工程实现。",
+      "tags": ["RAG", "Tool Use", "LangChain", "Workflow", "Memory"]
+    },
+    {
+      "title": "Knowledge Graph",
+      "status": "方向积累",
+      "note": "整理实体抽取、关系建模、图数据库存储、图查询和知识增强应用的实践。",
+      "tags": ["Neo4j", "Cypher", "Entity", "Relation", "Graph Query"]
+    }
+  ],
+  "research": [
+    {
+      "type": "Question",
+      "title": "研究问题库",
+      "note": "记录问题背景、相关工作、关键假设和可能的评估指标。",
+      "tags": ["problem framing", "survey"]
+    },
+    {
+      "type": "Method",
+      "title": "论文阅读与方法拆解",
+      "note": "整理论文动机、主要贡献、方法结构、实验设置和局限。",
+      "tags": ["paper notes", "baseline"]
+    },
+    {
+      "type": "Experiment",
+      "title": "实验复现与分析",
+      "note": "保留数据、配置、结果表、误差分析和失败实验记录。",
+      "tags": ["reproduction", "ablation"]
+    }
+  ]
+}

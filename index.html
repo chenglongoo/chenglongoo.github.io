@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chenglong | Personal Portfolio</title>
+    <meta
+      name="description"
+      content="Chenglong 的个人主页，整理简历、项目、算法笔记、工程经历和科研记录。"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <canvas id="signal-canvas" aria-hidden="true"></canvas>
+    <header class="site-header">
+      <a class="brand" href="./" data-page-link="home" aria-label="返回首页">
+        <span class="brand-mark">CL</span>
+        <span class="brand-text">Chenglong</span>
+      </a>
+      <nav class="nav" aria-label="主导航">
+        <a href="./?page=profile" data-page-link="profile">Profile</a>
+        <a href="./?page=programming" data-page-link="programming">Programming</a>
+        <a href="./?page=algorithms" data-page-link="algorithms">Algorithms</a>
+        <a href="./?page=engineering" data-page-link="engineering">Engineering</a>
+        <a href="./?page=research" data-page-link="research">Research</a>
+        <a href="./?page=projects" data-page-link="projects">Projects</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section id="home" class="hero page-view" data-page="home">
+        <div class="hero-copy">
+          <p class="eyebrow">Portfolio / Resume / Notes</p>
+          <h1>你好，我是 Chenglong。这里整理我的学习、项目和研究记录。</h1>
+          <p class="hero-text">
+            这个网站会持续更新我的技术栈、算法训练、工程项目和科研积累。你可以把它当作一份展开版简历，也可以从项目和笔记里了解我具体做过什么。
+          </p>
+          <div class="hero-actions">
+            <a class="primary-action" href="./?page=profile" data-page-link="profile">查看个人信息</a>
+            <a class="secondary-action" href="./?page=projects" data-page-link="projects">查看项目</a>
+          </div>
+        </div>
+
+        <div class="hero-panel" aria-label="能力概览">
+          <div class="terminal-bar">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <pre><code>const profile = {
+  name: "Chenglong",
+  focus: ["AI", "Engineering", "Research"]
+}
+
+const capability = [
+  "programming",
+  "algorithms",
+  "engineering",
+  "research"
+]
+
+projects.connect(capability)</code></pre>
+          <div class="system-metrics dynamic-content" id="system-metrics"></div>
+        </div>
+      </section>
+
+      <section id="profile" class="section profile-section page-view" data-page="profile" hidden>
+        <div class="section-heading">
+          <p class="eyebrow">Profile</p>
+          <h2>先放最重要的信息：我是谁、在做什么、如何联系。</h2>
+        </div>
+        <div class="profile-grid">
+          <article class="profile-summary">
+            <p>
+              个人简介会集中维护学校/专业、研究方向、项目经历、当前关注的技术方向，以及联系方式。
+            </p>
+          </article>
+          <div class="profile-facts dynamic-content" id="profile-facts"></div>
+        </div>
+      </section>
+
+      <section id="programming" class="section module-section programming-module page-view" data-page="programming" hidden>
+        <div class="module-intro">
+          <p class="eyebrow">Programming</p>
+          <h2>编程语言学习档案</h2>
+          <p>按语言记录学习状态、使用方向、重点主题和笔记入口，后续可以逐步补充学习过程。</p>
+        </div>
+        <div class="language-grid dynamic-content" id="language-grid"></div>
+      </section>
+
+      <section id="algorithms" class="section module-section algorithm-module page-view" data-page="algorithms" hidden>
+        <div class="module-intro">
+          <p class="eyebrow">Algorithms</p>
+          <h2>算法能力</h2>
+          <p>按专题整理题解、模板和复盘，方便面试前快速回看。</p>
+        </div>
+        <div class="algorithm-board dynamic-content" id="algorithm-board"></div>
+      </section>
+
+      <section id="engineering" class="section module-section engineering-module page-view" data-page="engineering" hidden>
+        <div class="module-intro">
+          <p class="eyebrow">Engineering</p>
+          <h2>工程能力</h2>
+          <p>按技术方向整理项目实践和工具链积累，重点说明能用这些技术完成什么。</p>
+        </div>
+        <div class="engineering-stack dynamic-content" id="engineering-stack"></div>
+      </section>
+
+      <section id="research" class="section module-section research-module page-view" data-page="research" hidden>
+        <div class="module-intro">
+          <p class="eyebrow">Research</p>
+          <h2>科研能力</h2>
+          <p>整理论文阅读、实验复现、结果分析和阶段性产出。</p>
+        </div>
+        <div class="research-ledger dynamic-content" id="research-ledger"></div>
+      </section>
+
+      <section id="projects" class="section projects-section page-view" data-page="projects" hidden>
+        <div class="section-heading compact">
+          <p class="eyebrow">Projects</p>
+          <h2>项目和笔记会作为能力证明持续补充。</h2>
+        </div>
+        <div class="project-grid dynamic-content" id="project-grid"></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>Built for GitHub Pages.</span>
+      <span>Resume, projects, notes and research records.</span>
+    </footer>
+
+    <script src="./app.js"></script>
+    <script src="./background.js"></script>
+  </body>
+</html>

@@ -258,8 +258,8 @@ function renderNotePage(note, contentHtml) {
     </main>
 
     <footer class="site-footer">
-      <span>Built for GitHub Pages.</span>
-      <span>Markdown note viewer.</span>
+      <span>Chenglong Portfolio</span>
+      <span>Notes and research records.</span>
     </footer>
 
     <script src="../../background.js"></script>

@@ -8,7 +8,7 @@
     },
     {
       "name": "Java",
-      "status": "后端方向学习中",
+      "status": "后端工程方向",
       "use": "用于后端服务、企业级开发基础、面向对象设计和 Spring 生态学习。",
       "topics": ["JVM", "集合框架", "并发", "Spring Boot", "数据库访问"]
     },
@@ -20,13 +20,13 @@
     },
     {
       "name": "Rust",
-      "status": "计划 / 学习中",
-      "use": "用于建立更强的系统编程、安全抽象、错误处理和并发模型理解。",
+      "status": "系统编程方向",
+      "use": "用于建立系统编程、安全抽象、错误处理和并发模型的理解。",
       "topics": ["Ownership", "Borrowing", "Lifetime", "Trait", "Cargo"]
     },
     {
       "name": "Go",
-      "status": "计划 / 学习中",
+      "status": "服务端工程方向",
       "use": "用于后端服务、云原生工具链、并发模型和简洁工程实践。",
       "topics": ["Goroutine", "Channel", "Interface", "HTTP 服务", "部署"]
     }
@@ -47,7 +47,7 @@
     {
       "title": "Analysis",
       "score": "复盘",
-      "note": "记录状态设计、边界条件、复杂度分析和没有一次做对的题。",
+      "note": "记录状态设计、边界条件、复杂度分析和典型错误模式。",
       "items": ["复杂度分析", "状态转移推导", "错题复盘"]
     }
   ],
@@ -55,31 +55,31 @@
     {
       "title": "Backend",
       "status": "项目实践",
-      "note": "设计接口、组织业务逻辑、处理数据持久化、认证权限、任务调度和基础部署。",
+      "note": "围绕接口设计、业务逻辑组织、数据持久化、认证权限、任务调度和基础部署形成后端工程能力。",
       "tags": ["FastAPI", "Spring Boot", "REST API", "SQL", "Docker"]
     },
     {
       "title": "Big Data",
-      "status": "方向积累",
-      "note": "围绕数据清洗、ETL、批处理任务和大规模数据分析整理工具链与实践记录。",
+      "status": "数据工程方向",
+      "note": "围绕数据清洗、ETL、批处理任务和大规模数据分析建立数据工程实践框架。",
       "tags": ["Spark", "Hadoop", "Hive", "ETL", "Data Pipeline"]
     },
     {
       "title": "Machine Learning",
-      "status": "持续使用",
-      "note": "覆盖数据处理、模型训练、实验评估、结果分析，以及基础推理服务的构建。",
+      "status": "模型工程方向",
+      "note": "覆盖数据处理、模型训练、实验评估、结果分析和基础推理服务构建。",
       "tags": ["PyTorch", "Scikit-learn", "Pandas", "Experiment", "Inference"]
     },
     {
       "title": "AI Agent",
-      "status": "重点关注",
-      "note": "探索工具调用、RAG、任务编排、记忆机制和多步骤推理应用的工程实现。",
+      "status": "应用构建方向",
+      "note": "围绕工具调用、RAG、任务编排、记忆机制和多步骤推理应用建立工程实现能力。",
       "tags": ["RAG", "Tool Use", "LangChain", "Workflow", "Memory"]
     },
     {
       "title": "Knowledge Graph",
-      "status": "方向积累",
-      "note": "整理实体抽取、关系建模、图数据库存储、图查询和知识增强应用的实践。",
+      "status": "知识建模方向",
+      "note": "围绕实体抽取、关系建模、图数据库存储、图查询和知识增强应用组织实践。",
       "tags": ["Neo4j", "Cypher", "Entity", "Relation", "Graph Query"]
     }
   ],
@@ -87,7 +87,7 @@
     {
       "type": "Question",
       "title": "研究问题库",
-      "note": "记录问题背景、相关工作、关键假设和可能的评估指标。",
+      "note": "记录问题背景、相关工作、关键假设和评估指标设计。",
       "tags": ["problem framing", "survey"]
     },
     {
@@ -99,7 +99,7 @@
     {
       "type": "Experiment",
       "title": "实验复现与分析",
-      "note": "保留数据、配置、结果表、误差分析和失败实验记录。",
+      "note": "保留数据、配置、结果表、误差分析和实验复盘记录。",
       "tags": ["reproduction", "ablation"]
     }
   ]

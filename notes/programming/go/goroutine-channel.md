@@ -7,7 +7,7 @@ tags: [goroutine, channel, concurrency]
 
 # Goroutine 与 Channel
 
-这篇笔记记录 Go 并发模型的基础用法。
+Go 的并发模型强调通过 goroutine 执行任务，通过 channel 组织通信。设计并发程序时需要明确任务生命周期、错误传播和退出机制。
 
 ## 重点
 

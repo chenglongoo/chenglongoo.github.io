@@ -73,7 +73,7 @@ function getNotes(notes, module, group) {
 
 function renderNoteLinks(notes) {
   if (!notes.length) {
-    return `<p class="empty-notes">暂无笔记。</p>`;
+    return `<p class="empty-notes">该方向暂未公开笔记。</p>`;
   }
 
   return `
@@ -223,7 +223,7 @@ function renderProjects(projects) {
 function renderLoadError(error) {
   console.error(error);
   document.querySelectorAll(".dynamic-content").forEach((container) => {
-    container.innerHTML = `<p class="content-error">内容加载失败，请确认已运行 <code>npm run build</code>。</p>`;
+    container.innerHTML = `<p class="content-error">内容暂时无法加载。</p>`;
   });
 }
 

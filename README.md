@@ -1,40 +1,49 @@
-# Personal Capability Platform
+# Chenglong Portfolio
 
-纯静态个人能力平台，用于维护简历、编程语言、算法、工程、科研、项目和学习笔记。
+个人技术主页源码，用于展示简历信息、技术能力、项目实践和学习笔记。站点采用纯静态架构，内容以 JSON 和 Markdown 维护，通过 GitHub Actions 构建并部署到 GitHub Pages。
 
-## 本地开发
-
-首次安装依赖：
-
-```bash
-npm install
-```
-
-生成笔记页面和部署产物：
-
-```bash
-npm run build
-```
-
-启动本地服务器：
-
-```bash
-npm run serve
-```
-
-访问 `http://localhost:4173`。
-
-## 内容维护
-
-结构化内容位于：
+访问地址：
 
 ```text
-data/profile.json
-data/capabilities.json
-data/projects.json
+https://chenglongoo.github.io/
 ```
 
-学习笔记位于 `notes/`。每篇 Markdown 使用标准 YAML front matter：
+## Features
+
+- Profile：个人简介、方向和基础信息入口。
+- Programming：按语言组织编程能力和学习笔记。
+- Algorithms：按数据结构、解题方法和复杂度分析组织算法积累。
+- Engineering：按后端、大数据、机器学习、AI Agent、知识图谱组织工程能力。
+- Research：按问题定义、方法拆解、实验复现组织科研训练。
+- Projects：展示项目实践和技术产出。
+- Notes：Markdown 笔记在构建阶段生成独立静态阅读页。
+
+## Architecture
+
+```text
+index.html              # 页面结构
+app.js                  # 前端路由和数据渲染
+background.js           # 背景动效
+styles.css              # 样式
+data/                   # 结构化展示数据
+notes/                  # Markdown 学习笔记
+scripts/build.mjs       # 构建、校验、笔记生成和部署产物生成
+.github/workflows/      # GitHub Pages 自动部署
+```
+
+构建过程会校验结构化数据和笔记 front matter，生成：
+
+```text
+data/notes.json
+generated/notes/*.html
+dist/
+dist/sitemap.xml
+dist/robots.txt
+```
+
+## Content Model
+
+每篇笔记使用 YAML front matter 声明所属模块和分组：
 
 ```md
 ---
@@ -45,41 +54,38 @@ tags: [STL, container]
 ---
 ```
 
-支持的 `module`：
+构建脚本会校验 `module/group` 是否能匹配到能力模块，避免页面中出现失联笔记。
 
-```text
-programming
-algorithms
-engineering
-research
+## Development
+
+```bash
+npm install
+npm run build
+npm run serve
 ```
 
-新增或修改笔记后运行 `npm run build`。构建脚本会：
-
-1. 校验 front matter。
-2. 使用 `marked` 解析 Markdown。
-3. 使用 `sanitize-html` 清理输出。
-4. 生成 `data/notes.json`。
-5. 为每篇笔记生成独立 HTML 阅读页。
-6. 生成可部署的 `dist/` 目录。
-
-## GitHub Pages
-
-工作流位于 `.github/workflows/pages.yml`。推送到 `master` 或 `main` 后会自动：
-
-1. 使用 `npm ci` 安装锁定版本依赖。
-2. 执行 `npm run build`。
-3. 部署 `dist/` 到 GitHub Pages。
-
-在仓库 Settings → Pages 中将 Source 设置为 **GitHub Actions**。
-
-## 页面路由
-
-主页使用 query-string 静态路由：
+本地预览地址：
 
 ```text
-/?page=programming
-/?page=engineering
+http://localhost:4173
 ```
 
-笔记使用构建时生成的静态页面，因此不需要后端或运行时 Markdown 解析器。
+`npm run serve` 会先构建 `dist/`，再直接服务部署产物，保证本地预览与线上行为一致。
+
+## Quality Checks
+
+```bash
+npm run check
+```
+
+当前检查包含 JavaScript 语法检查。构建阶段还会执行：
+
+- 数据结构校验
+- 笔记 front matter 校验
+- 笔记分组覆盖校验
+- Markdown 解析与 HTML 清理
+- sitemap 和 robots 生成
+
+## Deployment
+
+仓库推送到 `main` 或 `master` 后，GitHub Actions 会执行构建并将 `dist/` 发布到 GitHub Pages。

@@ -7,7 +7,7 @@ tags: [PyTorch, training, experiment]
 
 # PyTorch 训练流程
 
-这篇笔记记录一个基础 PyTorch 训练脚本应该包含的部分。
+PyTorch 训练流程需要把数据、模型、损失函数、优化器、训练循环和实验记录组织成可复现结构。
 
 ## 重点
 

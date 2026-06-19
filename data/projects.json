@@ -1,8 +1,8 @@
 [
   {
-    "status": "active",
+    "status": "maintained",
     "title": "个人能力平台",
-    "note": "使用 GitHub Pages 展示简历、能力模块、项目和学习笔记。",
-    "tags": ["GitHub Pages", "Frontend", "Knowledge Base"]
+    "note": "面向个人简历、能力展示和学习笔记沉淀的静态技术平台，包含内容索引、Markdown 笔记构建和自动部署流程。",
+    "tags": ["Static Site", "Frontend", "Markdown", "Automation"]
   }
 ]

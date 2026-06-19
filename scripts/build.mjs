@@ -12,6 +12,7 @@ const dataDir = path.join(rootDir, "data");
 const outputDir = path.join(rootDir, "generated", "notes");
 const notesIndexFile = path.join(dataDir, "notes.json");
 const distDir = path.join(rootDir, "dist");
+const siteUrl = "https://chenglongoo.github.io";
 
 const requiredFields = ["title", "module", "group"];
 const validModules = new Set(["programming", "algorithms", "engineering", "research"]);
@@ -106,6 +107,114 @@ function sanitizeMarkdown(markdown) {
       })
     }
   });
+}
+
+function readJson(fileName) {
+  return JSON.parse(fs.readFileSync(path.join(dataDir, fileName), "utf8"));
+}
+
+function assertString(value, label) {
+  if (typeof value !== "string" || !value.trim()) {
+    throw new Error(`${label} must be a non-empty string`);
+  }
+}
+
+function validateDataFiles() {
+  const profile = readJson("profile.json");
+  const capabilities = readJson("capabilities.json");
+  const projects = readJson("projects.json");
+
+  if (!Array.isArray(profile.facts) || !Array.isArray(profile.metrics)) {
+    throw new Error("data/profile.json must contain facts and metrics arrays");
+  }
+
+  for (const [index, fact] of profile.facts.entries()) {
+    if (!Array.isArray(fact) || fact.length !== 2) {
+      throw new Error(`data/profile.json facts[${index}] must be a [label, value] pair`);
+    }
+  }
+
+  for (const key of ["languages", "algorithms", "engineering", "research"]) {
+    if (!Array.isArray(capabilities[key])) {
+      throw new Error(`data/capabilities.json "${key}" must be an array`);
+    }
+  }
+
+  for (const language of capabilities.languages) {
+    assertString(language.name, "language.name");
+    assertString(language.status, `${language.name}.status`);
+    assertString(language.use, `${language.name}.use`);
+    if (!Array.isArray(language.topics)) throw new Error(`${language.name}.topics must be an array`);
+  }
+
+  for (const lane of capabilities.algorithms) {
+    assertString(lane.title, "algorithm.title");
+    assertString(lane.score, `${lane.title}.score`);
+    assertString(lane.note, `${lane.title}.note`);
+    if (!Array.isArray(lane.items)) throw new Error(`${lane.title}.items must be an array`);
+  }
+
+  for (const item of capabilities.engineering) {
+    assertString(item.title, "engineering.title");
+    assertString(item.status, `${item.title}.status`);
+    assertString(item.note, `${item.title}.note`);
+    if (!Array.isArray(item.tags)) throw new Error(`${item.title}.tags must be an array`);
+  }
+
+  for (const item of capabilities.research) {
+    assertString(item.type, "research.type");
+    assertString(item.title, `${item.type}.title`);
+    assertString(item.note, `${item.type}.note`);
+    if (!Array.isArray(item.tags)) throw new Error(`${item.type}.tags must be an array`);
+  }
+
+  if (!Array.isArray(projects)) {
+    throw new Error("data/projects.json must be an array");
+  }
+
+  for (const [index, project] of projects.entries()) {
+    assertString(project.status, `projects[${index}].status`);
+    assertString(project.title, `projects[${index}].title`);
+    assertString(project.note, `projects[${index}].note`);
+    if (!Array.isArray(project.tags)) throw new Error(`projects[${index}].tags must be an array`);
+  }
+
+  return capabilities;
+}
+
+function expectedNoteGroups(capabilities) {
+  return new Map([
+    ["programming", new Set(capabilities.languages.map((item) => item.name))],
+    ["algorithms", new Set(capabilities.algorithms.map((item) => item.title))],
+    ["engineering", new Set(capabilities.engineering.map((item) => item.title))],
+    ["research", new Set(capabilities.research.map((item) => item.type))]
+  ]);
+}
+
+function validateNoteCoverage(notes, capabilities) {
+  const expected = expectedNoteGroups(capabilities);
+  const seen = new Map();
+
+  for (const note of notes) {
+    const groups = expected.get(note.module);
+    if (!groups || !groups.has(note.group)) {
+      throw new Error(`Note "${note.title}" uses unknown group "${note.module}/${note.group}"`);
+    }
+    const key = `${note.module}/${note.group}`;
+    if (!seen.has(key)) seen.set(key, 0);
+    seen.set(key, seen.get(key) + 1);
+  }
+
+  const uncovered = [];
+  for (const [module, groups] of expected.entries()) {
+    for (const group of groups) {
+      if (!seen.has(`${module}/${group}`)) uncovered.push(`${module}/${group}`);
+    }
+  }
+
+  if (uncovered.length) {
+    throw new Error(`Missing notes for capability groups: ${uncovered.join(", ")}`);
+  }
 }
 
 function renderNotePage(note, contentHtml) {
@@ -207,13 +316,51 @@ function buildDist() {
 
   fs.cpSync(dataDir, path.join(distDir, "data"), { recursive: true });
   fs.cpSync(path.join(rootDir, "generated"), path.join(distDir, "generated"), { recursive: true });
+  writeSeoFiles();
   fs.writeFileSync(path.join(distDir, ".nojekyll"), "");
+}
+
+function writeSeoFiles() {
+  const notes = JSON.parse(fs.readFileSync(notesIndexFile, "utf8"));
+  const urls = [
+    "",
+    "?page=profile",
+    "?page=programming",
+    "?page=algorithms",
+    "?page=engineering",
+    "?page=research",
+    "?page=projects",
+    ...notes.map((note) => note.href.replace(/^\.\//, ""))
+  ];
+
+  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${urls
+  .map(
+    (url) => `  <url>
+    <loc>${siteUrl}/${url}</loc>
+  </url>`,
+  )
+  .join("\n")}
+</urlset>
+`;
+
+  const robots = `User-agent: *
+Allow: /
+
+Sitemap: ${siteUrl}/sitemap.xml
+`;
+
+  fs.writeFileSync(path.join(distDir, "sitemap.xml"), sitemap);
+  fs.writeFileSync(path.join(distDir, "robots.txt"), robots);
 }
 
 fs.rmSync(outputDir, { recursive: true, force: true });
 fs.mkdirSync(outputDir, { recursive: true });
 fs.mkdirSync(dataDir, { recursive: true });
 
+const capabilities = validateDataFiles();
 const noteCount = buildNotes();
+validateNoteCoverage(JSON.parse(fs.readFileSync(notesIndexFile, "utf8")), capabilities);
 buildDist();
 console.log(`Built ${noteCount} note pages and the dist/ deployment artifact.`);
